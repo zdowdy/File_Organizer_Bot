@@ -1,0 +1,17 @@
+# Virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Log file (auto-generated)
+organizer.log
+
+# VS Code settings
+.vscode/
+
+# Windows system files
+desktop.ini
+Thumbs.db
