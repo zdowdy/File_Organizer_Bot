@@ -18,3 +18,6 @@ Thumbs.db
 
 # Environment variables (never push this)
 .env
+
+# Test cache
+tests/__pycache__/
