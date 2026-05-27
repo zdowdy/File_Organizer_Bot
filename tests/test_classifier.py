@@ -58,7 +58,7 @@ class TestClassifyFile(unittest.TestCase):
         self.assertIn('Unsorted', classify_file(f))
 
     def test_matlab_goes_to_code(self):
-        f = self.make_mock_file('ZyDowdy3.m')
+        f = self.make_mock_file('matlab.m')
         self.assertEqual(classify_file(f), 'Code')
 if __name__=='__main__':
     unittest.main()
