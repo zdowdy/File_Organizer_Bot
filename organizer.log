@@ -1,9 +1,0 @@
-[05-24-2026 19:31:24] INFO - ==================================================
-[05-24-2026 19:31:24] INFO - File Organizer Bot Active
-[05-24-2026 19:31:24] INFO - Active in C:\Users\ziero\Downloads
-[05-24-2026 19:31:24] INFO - ==================================================
-[05-24-2026 19:34:01] ERROR - Error: C:\Users\ziero\Downloads\7Q3qR_-8.pdf - [WinError 2] The system cannot find the file specified
-[05-24-2026 19:34:03] ERROR - Error: C:\Users\ziero\Downloads\7Q3qR_-8.pdf.part - Watcher error- [WinError 2] The system cannot find the file specified: 'C:\\Users\\ziero\\Downloads\\7Q3qR_-8.pdf.part'
-[05-24-2026 19:34:05] INFO - Moved: C:\Users\ziero\Downloads\2025-2026-Valencia College-Computer Engineering (BSCpE).pdf -> C:\Users\ziero\Downloads\Documents\2025-2026-Valencia College-Computer Engineering (BSCpE).pdf
-[05-24-2026 19:34:07] ERROR - Error: C:\Users\ziero\Downloads\2025-2026-Valencia College-Computer Engineering (BSCpE).pdf - [WinError 2] The system cannot find the file specified
-[05-25-2026 15:31:29] INFO - Moved: <MagicMock id='2563225582096'> -> C:\Users\ziero\Downloads\Images\photo.jpg

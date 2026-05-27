@@ -15,3 +15,6 @@ organizer.log
 # Windows system files
 desktop.ini
 Thumbs.db
+
+# Environment variables (never push this)
+.env
