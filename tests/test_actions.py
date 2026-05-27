@@ -55,14 +55,14 @@ class TestOrganizeFile(unittest.TestCase):
         f=self.make_mock_file('photo.jpg')
 
         with patch('actions.shutil.move') as mock_move:
-            organize_file(f, 'C:/Users/ziero/Downloads', dry_run=True)
+            organize_file(f, 'C:/Users/TestUser/Downloads', dry_run=True)
             mock_move.assert_not_called()
 
     def test_none_categiry_skips_file(self):                                #Test that desktop.ini never gets moved since it in SKIP_FILE
         f=self.make_mock_file('desktop.ini')
 
         with patch('actions.shutil.move') as mock_move:
-            organize_file(f, 'C:/Users/ziero/Downloads', dry_run=False)
+            organize_file(f, 'C:/Users/TestUser/Downloads', dry_run=False)
             mock_move.assert_not_called()
 
     def test_live_run_calls_move(self):                                     #Patches three things so they dont actually run shutil.move,Path.mkdir, and Path.exists confirms shutil.move was called only once
@@ -71,7 +71,7 @@ class TestOrganizeFile(unittest.TestCase):
         with patch('actions.shutil.move') as mock_move:
             with patch('actions.Path.mkdir'):
                 with patch('actions.Path.exists', return_value=False):
-                    organize_file(f, 'C:/Users/ziero/Downloads', dry_run=False)
+                    organize_file(f, 'C:/Users/TestUser/Downloads', dry_run=False)
                     mock_move.assert_called_once()
 
 if __name__ =='__main__':
