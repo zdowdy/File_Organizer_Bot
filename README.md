@@ -115,16 +115,28 @@ python -m unittest tests.test_actions -v
 
 ## Automation (Windows Task Scheduler)
 
-The bot can run fully automatically using Windows Task Scheduler:
+The bot runs fully automatically using Windows Task Scheduler:
 
 | Task | Trigger | Script |
 |---|---|---|
-| Real-time watcher | On system startup | `run_watcher.bat` |
+| Real-time watcher | At log on | `run_watcher.bat` |
 | Weekly folder organization | Weekly (e.g. Monday 8:30 AM) | `run_actions.bat` |
 | Weekly email report | Weekly (e.g. Monday 9:00 AM) | `email_alerts.py` |
 
-Set the **Start in** field in Task Scheduler to your project folder path for all three tasks.
+### Task Scheduler Settings
+For the watcher task set the following under Properties:
 
+**General tab:**
+- Run only when user is logged on
+- Run with highest privileges
+
+**Trigger:**
+- Set to At log on — not At startup, which runs before Python is accessible
+
+**Settings tab:**
+- Allow task to run on demand
+- Restart every 1 minute, up to 3 times
+- Uncheck "Stop the task if it runs longer than"
 ---
 
 ## Category Folders
