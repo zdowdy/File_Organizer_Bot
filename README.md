@@ -137,6 +137,8 @@ For the watcher task set the following under Properties:
 - Allow task to run on demand
 - Restart every 1 minute, up to 3 times
 - Uncheck "Stop the task if it runs longer than"
+
+Set the **Start in** field in Task Scheduler to your project folder path for all three tasks. For the email task set `email_alerts.py` as the argument and point the program directly at your venv Python executable.
 ---
 
 ## Category Folders
