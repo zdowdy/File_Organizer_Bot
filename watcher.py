@@ -15,7 +15,11 @@ class OrganizerHandler(FileSystemEventHandler):
         
         if file_path.suffix in ('.part','.crdownload','.tmp'):              #Skips partial down load and temp files clear terminal and log noise
             return
-        time.sleep(2)                                                       #Delay 2 seconds so the file can get fully written on the disk
+        
+        time.sleep(4)                                                       #Updated the sleep time to [reduce errors in the email report]
+
+        if not file_path.exists():                                          #Updated to skip if file has already been moved or deleted[reduces errors in the email report]
+            return
 
         try:                                                                #Try/except prevents the bot from crashing if an error where to occur it logs it and continues
             organize_file(file_path, config.TARGET_FOLDER, dry_run=False)
@@ -31,7 +35,10 @@ class OrganizerHandler(FileSystemEventHandler):
         if file_path.suffix in ('.part','.crdownload','.tmp'):              #Skips partial down load and temp files clear terminal and log noise
             return
         
-        time.sleep(2)
+        time.sleep(4)                                                       #Updated the sleep time to [reduce errors in the email report]
+
+        if not file_path.exists():                                          #Updated to skip if file has already been moved or deleted[reduces errors in the email report]
+            return
 
         try:                                                                #Try/except prevents the bot from crashing if an error where to occur it logs it and continues
             organize_file(file_path, config.TARGET_FOLDER, dry_run=False)
