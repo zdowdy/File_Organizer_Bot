@@ -48,7 +48,7 @@ cd file_organizer_bot
 ```bash
 python -m venv venv
 .\venv\Scripts\Activate.ps1      # Windows
-source venv/bin/activate          # Mac/Linux
+source venv/bin/activate         # Mac/Linux
 ```
 
 **3. Install dependencies:**
@@ -78,7 +78,7 @@ EMAIL_RECEIVER=your@gmail.com
 
 ## Usage
 
-**Preview what would be organized — nothing moves:**
+**Preview what would be organized - nothing moves:**
 ```bash
 python actions.py
 ```
@@ -96,7 +96,7 @@ python watcher.py
 ```
 Press `Ctrl+C` to stop.
 
-> **Note:** `Ctrl+C` only works when running `watcher.py` manually in a terminal. When running via Task Scheduler use `pythonw.exe` (see Automation section) — to stop it right-click the task in Task Scheduler and select **End**, or kill `pythonw.exe` in Task Manager.
+> **Note:** `Ctrl+C` only works when running `watcher.py` manually in a terminal. When running via Task Scheduler use `pythonw.exe` (see Automation section) - to stop it right-click the task in Task Scheduler and select **End**, or kill `pythonw.exe` in Task Manager.
 
 **Send a weekly email report manually:**
 ```bash
@@ -126,10 +126,10 @@ For the watcher task set the following under Properties:
 
 **General tab:**
 - Run only when user is logged on
-- Leave **Run with highest privileges unchecked** — enabling it causes the task to fail by running in a different security context that cannot access user profile paths
+- Leave **Run with highest privileges unchecked** - enabling it causes the task to fail by running in a different security context that cannot access user profile paths
 
 **Trigger:**
-- Set to At log on — not At startup, which runs before Python is accessible
+- Set to At log on - not At startup, which runs before Python is accessible
 
 **Action tab:**
 
@@ -157,8 +157,8 @@ Point Task Scheduler directly at your venv Python executable for all three tasks
 | Start in | `C:\path\to\your\project\file_organization_bot` |
 
 > **`python.exe` vs `pythonw.exe`:**
-> - Use `pythonw.exe` for the watcher — runs silently in the background with no console window, no Ctrl+C required
-> - Use `python.exe` for actions and email tasks — they run, complete, and exit on their own so no console suppression is needed
+> - Use `pythonw.exe` for the watcher - runs silently in the background with no console window, no Ctrl+C required
+> - Use `python.exe` for actions and email tasks - they run, complete, and exit on their own so no console suppression is needed
 > - To stop a `pythonw.exe` task: right-click it in Task Scheduler → **End**, or kill `pythonw.exe` in Task Manager
 
 **Settings tab:**
@@ -189,9 +189,9 @@ Point Task Scheduler directly at your venv Python executable for all three tasks
 
 Files are classified using three rules checked in this order:
 
-1. **Keyword match** — filename contains words like `resume`, `tax`, `immunization`
-2. **Extension match** — file type maps to a category (`.pdf` → Documents)
-3. **Date fallback** — unrecognized files are sorted into `Unsorted files/YEAR`
+1. **Keyword match** - filename contains words like `resume`, `tax`, `immunization`
+2. **Extension match** - file type maps to a category (`.pdf` → Documents)
+3. **Date fallback** - unrecognized files are sorted into `Unsorted files/YEAR`
 
 Keywords are checked before extensions so that a file like `resume.pdf` correctly routes to `Career` instead of `Documents`.
 

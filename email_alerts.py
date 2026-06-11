@@ -95,7 +95,7 @@ def send_weekly_report():
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.ehlo()
-            server.starttls()          # upgrades to encrypted connection
+            server.starttls()                                           # upgrades to encrypted connection
             server.ehlo()
             server.login(SENDER, PASSWORD)
             server.sendmail(SENDER, RECEIVER, msg.as_string())

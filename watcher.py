@@ -16,7 +16,7 @@ class OrganizerHandler(FileSystemEventHandler):
         if file_path.suffix in ('.part','.crdownload','.tmp'):              #Skips partial down load and temp files clear terminal and log noise
             return
         
-        time.sleep(4)                                                       #Updated the sleep time to [reduce errors in the email report]
+        time.sleep(6)                                                       #Updated the sleep time to [reduce errors in the email report]
 
         if not file_path.exists():                                          #Updated to skip if file has already been moved or deleted[reduces errors in the email report]
             return
@@ -35,7 +35,7 @@ class OrganizerHandler(FileSystemEventHandler):
         if file_path.suffix in ('.part','.crdownload','.tmp'):              #Skips partial down load and temp files clear terminal and log noise
             return
         
-        time.sleep(4)                                                       #Updated the sleep time to [reduce errors in the email report]
+        time.sleep(6)                                                       #Updated the sleep time to [reduce errors in the email report]
 
         if not file_path.exists():                                          #Updated to skip if file has already been moved or deleted[reduces errors in the email report]
             return

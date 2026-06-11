@@ -1,8 +1,7 @@
 from datetime import datetime
 from collections import Counter
 
-#The dict the classifing for the file types
-EXTENSION_MAP = {
+EXTENSION_MAP = {                                                                                   #The dict the classifing for the file types
     # Documents
     '.pdf': 'Documents', '.docx': 'Documents', '.doc': 'Documents',
     '.txt': 'Documents', '.xlsx': 'Documents', '.csv': 'Documents',
@@ -24,8 +23,8 @@ EXTENSION_MAP = {
     #Game files
     '.ini': 'Game Files', 'dll': 'Game Files', '.gi':'Game Files', '.dll': 'Game Files'
 }
-#The dict for keywords in the file name
-KEYWORD_MAP = {
+
+KEYWORD_MAP = {                                                                                     #The dict for keywords in the file name
     'invoice': 'Finance',
     'budget':  'Finance',
     'receipt': 'Finance',
@@ -54,29 +53,25 @@ KEYWORD_MAP = {
     'onlinefix': 'Game Files',
 }
 
-#Classify Files
 def classify_file(file_path):
     SKIP_NAMES = ('desktop.ini', 'thumbs.db')
-    #files to skip
-    if file_path.name.lower() in SKIP_NAMES:
+
+    if file_path.name.lower() in SKIP_NAMES:                                                        #files to skip
         return None
     
     name_sort=file_path.stem.lower()
     ext_sort=file_path.suffix.lower()
 
-    #Sorted by keyword (more specific)
-    for keyword,category in KEYWORD_MAP.items():
+    for keyword,category in KEYWORD_MAP.items():                                                    #Sorted by keyword (more specific)
         if keyword in name_sort:
             return category
 
-    #Sorted by extension (generalized)
-    if ext_sort in EXTENSION_MAP:
+    if ext_sort in EXTENSION_MAP:                                                                   #Sorted by extension (generalized)
         return EXTENSION_MAP[ext_sort]
         
-    #If the file does not fall into either of these categories sort by year modified
-    year_mod=datetime.fromtimestamp(file_path.stat().st_mtime).year
+    year_mod=datetime.fromtimestamp(file_path.stat().st_mtime).year                                 #If the file does not fall into either of these categories sort by year modified
     return (f'Unsorted files/{year_mod}')
-#Classify folders based on the majority of files in folder
+
 def classify_folder(folder_path):
     counts=Counter()
 
@@ -105,8 +100,7 @@ def classify_folder(folder_path):
 
     return 'Unsorted files'
 
-if __name__ == '__main__':
-    #test to print the category for every file in downloads
+if __name__ == '__main__':                                                                          #test to print the category for every file in downloads
     import config
     from pathlib import Path
 
