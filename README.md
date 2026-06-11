@@ -18,8 +18,6 @@ A Python bot that automatically organizes files and folders in a specified direc
 ---
 
 ## Project Structure
-
-```
 file_organization_bot/
 ├── config.py               # Target folder setting
 ├── scanner.py              # Scans and displays folder contents
@@ -32,9 +30,8 @@ file_organization_bot/
 ├── run_actions.bat         # Bat file for Task Scheduler automation
 ├── requirements.txt        # Project dependencies
 └── tests/
-    ├── test_classifier.py
-    └── test_actions.py
-```
+├── test_classifier.py
+└── test_actions.py
 
 ---
 
@@ -70,11 +67,9 @@ TARGET_FOLDER = r"Z:\Games"
 **5. Set up email alerts (optional):**
 
 Create a `.env` file in the project root:
-```
 EMAIL_SENDER=your@gmail.com
 EMAIL_PASSWORD=your_app_password
 EMAIL_RECEIVER=your@gmail.com
-```
 
 > **Note:** Gmail requires an [App Password](https://myaccount.google.com/apppasswords) — do not use your regular Gmail password. Never commit your `.env` file to GitHub.
 
@@ -99,6 +94,8 @@ Set `dry_run=False` at the bottom of `actions.py`.
 python watcher.py
 ```
 Press `Ctrl+C` to stop.
+
+> **Note:** `Ctrl+C` only works when running `watcher.py` manually in a terminal. When running via Task Scheduler use `pythonw.exe` (see Automation section) — to stop it right-click the task in Task Scheduler and select **End**, or kill `pythonw.exe` in Task Manager.
 
 **Send a weekly email report manually:**
 ```bash
@@ -128,17 +125,46 @@ For the watcher task set the following under Properties:
 
 **General tab:**
 - Run only when user is logged on
-- Run with highest privileges
+- Leave **Run with highest privileges unchecked** — enabling it causes the task to fail by running in a different security context that cannot access user profile paths
 
 **Trigger:**
 - Set to At log on — not At startup, which runs before Python is accessible
+
+**Action tab:**
+
+Point Task Scheduler directly at your venv Python executable for all three tasks:
+
+**Watcher Task:**
+| Field | Value |
+|---|---|
+| Program/script | `C:\path\to\your\venv\Scripts\pythonw.exe` |
+| Add arguments | `watcher.py` |
+| Start in | `C:\path\to\your\project\file_organization_bot` |
+
+**Actions Task:**
+| Field | Value |
+|---|---|
+| Program/script | `C:\path\to\your\venv\Scripts\python.exe` |
+| Add arguments | `run_actions.bat` |
+| Start in | `C:\path\to\your\project\file_organization_bot` |
+
+**Email Alerts Task:**
+| Field | Value |
+|---|---|
+| Program/script | `C:\path\to\your\venv\Scripts\python.exe` |
+| Add arguments | `email_alerts.py` |
+| Start in | `C:\path\to\your\project\file_organization_bot` |
+
+> **`python.exe` vs `pythonw.exe`:**
+> - Use `pythonw.exe` for the watcher — runs silently in the background with no console window, no Ctrl+C required
+> - Use `python.exe` for actions and email tasks — they run, complete, and exit on their own so no console suppression is needed
+> - To stop a `pythonw.exe` task: right-click it in Task Scheduler → **End**, or kill `pythonw.exe` in Task Manager
 
 **Settings tab:**
 - Allow task to run on demand
 - Restart every 1 minute, up to 3 times
 - Uncheck "Stop the task if it runs longer than"
 
-Set the **Start in** field in Task Scheduler to your project folder path for all three tasks. For the email task set `email_alerts.py` as the argument and point the program directly at your venv Python executable.
 ---
 
 ## Category Folders
