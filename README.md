@@ -18,6 +18,7 @@ A Python bot that automatically organizes files and folders in a specified direc
 ---
 
 ## Project Structure
+```bash
 file_organization_bot/
 ├── config.py               # Target folder setting
 ├── scanner.py              # Scans and displays folder contents
@@ -32,7 +33,7 @@ file_organization_bot/
 └── tests/
 ├── test_classifier.py
 └── test_actions.py
-
+```
 ---
 
 ## Setup
